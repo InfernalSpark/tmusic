@@ -59,7 +59,7 @@ fn update(app: &mut App) -> Result<()> {
       if key.kind == event::KeyEventKind::Press {
         match key.code {
                     Char('p') => audioplayback::play(),
-                    Char('q') => Ok(app.should_quit = true),
+                    Char('q') => app.should_quit = true,
                     _ => {},
                 }
                 //TODO ILLI LOGIC BARIYIRI
@@ -74,7 +74,7 @@ fn run() -> Result<()> {
   let mut t = Terminal::new(CrosstermBackend::new(std::io::stderr()))?;
 
   // application state
-  let mut app = App { counter: 0, should_quit: false };
+  let mut app = App {should_quit: false };
 
   loop {
     // application update
